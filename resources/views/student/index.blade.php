@@ -15,12 +15,22 @@
 
 <body>
     <div class="container">
-        <div class="row">
+        <div class="row-12">
             <nav class="navbar navbar-light bg-light">
                 <a class="navbar-brand" href="#">
-                    <img src="https://getbootstrap.com/docs/4.6/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+                    <img src="https://getbootstrap.com/docs/4.6/assets/brand/bootstrap-solid.svg" width="30"
+                        height="30" alt="">
                 </a>
             </nav>
+        </div>
+        <div class="row-12 mb-2">
+            <div class="col-12">
+                @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
+            </div>
         </div>
         <div class="row mb-2">
             <div class="col">
@@ -53,8 +63,9 @@
                                 <td>{{ $student->birthdate }}</td>
                                 <td>{{ $student->gender }}</td>
                                 <td>
-                                    <a class="btn btn-success" href="{{ url('/student/'. $student->id. '/edit') }}" role="button">Edit</a>
-                                    <form action="{{ url('/student/'. $student->id) }}" method="POST">
+                                    <a class="btn btn-success" href="{{ url('/student/' . $student->id . '/edit') }}"
+                                        role="button">Edit</a>
+                                    <form action="{{ url('/student/' . $student->id) }}" method="POST">
                                         @method('delete')
                                         @csrf
                                         <button type="submit" class="btn btn-danger">Delete</button>

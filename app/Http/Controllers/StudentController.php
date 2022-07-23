@@ -46,7 +46,7 @@ class StudentController extends Controller
             'gender' => $request->jeniskelamin
         ]); //query create | eloquent ORM
 
-        return redirect('/student');
+        return redirect('/student')->with('success', 'Hore, Data Berhasil Ditambahkan !');
     }
 
     /**
@@ -90,7 +90,7 @@ class StudentController extends Controller
             'gender' => $request->jeniskelamin
         ]);
 
-        return redirect('/student');
+        return redirect('/student')->with('success', 'Hore, Data Berhasil Diupdate !');
     }
 
     /**
@@ -102,6 +102,6 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         Student::destroy('id', $student->id); //query delete | eloquent ORM
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Hore, Data Berhasil Dihapus !');
     }
 }
